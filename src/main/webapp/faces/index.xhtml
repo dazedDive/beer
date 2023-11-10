@@ -8,12 +8,12 @@
     <h:outputLabel value="BEER WORLD 2000 "/>
     <h:form>
         <h:outputLabel for="combo" value="choisissez une couleur : "/>
-        <h:selectOneMenu id="combo" value="#{colorBean.colorSelected}">
+        <h:selectOneMenu id="combo" value="#{colorBean.colorSelected}"
+        onchange="submit()"
+        valueChangeListener="#{colorBean.colorChanged}">
             <f:selectItems value="#{colorBean.colors}"/>
             <f:converter converterId="colorConverter"/>
         </h:selectOneMenu>
-        <br/>
-        <h:commandButton value="Soumettre"/>
     </h:form>
     <h2>
         <h:outputText id="choice" value="votre selection : #{colorBean.colorSelected}"/>
