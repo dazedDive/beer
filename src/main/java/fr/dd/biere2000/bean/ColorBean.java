@@ -1,9 +1,8 @@
 package fr.dd.biere2000.bean;
-import fr.dd.biere2000.DAOFactory;
+import fr.dd.biere2000.dao.DAOFactory;
 import fr.dd.biere2000.entity.Couleur;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.faces.event.ValueChangeEvent;
 import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -30,8 +29,7 @@ public class ColorBean implements Serializable {
     public void setColorSelected(Couleur colorSelected){
         this.colorSelected = colorSelected;
     }
-    public void colorChanged(ValueChangeEvent e){
-        Couleur newColor = (Couleur) e.getNewValue();
-        setColorSelected(newColor);
+    public void colorChanged(){
+        System.out.println(colorSelected);
     }
 }

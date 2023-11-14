@@ -3,20 +3,48 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
 <f:view>
+    <h:head>
+        <h:outputStylesheet name="global.css"/>
+    </h:head>
+    <h:body>
     <h:outputLabel value="BEER WORLD 2000 "/>
     <h:form>
         <h:outputLabel for="combo" value="choisissez une couleur : "/>
         <h:selectOneMenu id="combo" value="#{colorBean.colorSelected}"
-        onchange="submit()"
-        valueChangeListener="#{colorBean.colorChanged}">
+        >
+            <f:ajax render="choice" listener="#{colorBean.colorChanged()}"/>
             <f:selectItems value="#{colorBean.colors}"/>
             <f:converter converterId="colorConverter"/>
         </h:selectOneMenu>
     </h:form>
+        <h:form>
+            <h:outputLabel for="combo2" value="choisissez un pays : "/>
+            <h:selectOneMenu id="combo2" value="#{countrieBean.countrySelected}">
+                <f:ajax render="choice" listener="#{countrieBean.countryChanged()}"/>
+                <f:selectItems value="#{countrieBean.countries}"/>
+                <f:converter converterId="countryConverter"/>
+            </h:selectOneMenu>
+        </h:form>
+        <h:form>
+            <h:outputLabel for="combo3" value="choisissez un style : "/>
+            <h:selectOneMenu id="combo3" value="#{typeBean.typeSelected}">
+                <f:ajax render="choice" listener="#{typeBean.typeChanged()}"/>
+                <f:selectItems value="#{typeBean.types}"/>
+                <f:converter converterId="typeConverter"/>
+            </h:selectOneMenu>
+        </h:form>
     <h2>
-        <h:outputText id="choice" value="votre selection : #{colorBean.colorSelected}"/>
+        <h:outputText id="choice" value="votre selection :
+        #{colorBean.colorSelected}
+        #{countrieBean.countrySelected}
+        #{typeBean.typeSelected}"/>
     </h2>
+    </h:body>
+    <h:button>Voir les Resultats : </h:button>
 </f:view>
 </html>

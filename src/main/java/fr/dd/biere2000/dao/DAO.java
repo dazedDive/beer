@@ -1,4 +1,4 @@
-package fr.dd.biere2000;
+package fr.dd.biere2000.dao;
 
 import java.sql.Connection;
 import java.util.ArrayList;
