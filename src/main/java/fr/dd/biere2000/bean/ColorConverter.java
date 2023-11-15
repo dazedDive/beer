@@ -24,6 +24,9 @@ public class ColorConverter implements Converter<Couleur> {
     }
 
     public String getAsString(FacesContext fc, UIComponent uic, Couleur couleur){
-        return String.valueOf(couleur.getId());
+        if(couleur != null) {
+            return String.valueOf(couleur.getId());
+        }
+        return "";
     }
 }

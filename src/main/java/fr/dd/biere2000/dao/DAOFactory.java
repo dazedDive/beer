@@ -1,8 +1,6 @@
 package fr.dd.biere2000.dao;
 
-import fr.dd.biere2000.entity.Couleur;
-import fr.dd.biere2000.entity.Pays;
-import fr.dd.biere2000.entity.TypeBiere;
+import fr.dd.biere2000.entity.*;
 
 public class DAOFactory {
 
@@ -15,4 +13,6 @@ public class DAOFactory {
     public static DAO<TypeBiere> typeDAO() {
         return new TypeBiereDAO();
     }
+    public static DAO<Marque> marqueDAOe() { return new MarqueDAO(); }
+    public static DAO<Article> articleDAO() { return new ArticleDAO(); }
 }

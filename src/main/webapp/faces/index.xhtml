@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
 <f:view>
@@ -12,39 +11,83 @@
         <h:outputStylesheet name="global.css"/>
     </h:head>
     <h:body>
-    <h:outputLabel value="BEER WORLD 2000 "/>
-    <h:form>
-        <h:outputLabel for="combo" value="choisissez une couleur : "/>
-        <h:selectOneMenu id="combo" value="#{colorBean.colorSelected}"
-        >
-            <f:ajax render="choice" listener="#{colorBean.colorChanged()}"/>
-            <f:selectItems value="#{colorBean.colors}"/>
-            <f:converter converterId="colorConverter"/>
-        </h:selectOneMenu>
-    </h:form>
+        <h1>
+            <h:outputText value="BEER WORLD 2000 "/>
+        </h1>
+        <p>
+            <h:outputText value="Trouve ta bière , bois, vomi ... ou pas"/>
+        </p>
+    <p:card style="width: auto; margin-bottom: 2em">
         <h:form>
-            <h:outputLabel for="combo2" value="choisissez un pays : "/>
-            <h:selectOneMenu id="combo2" value="#{countrieBean.countrySelected}">
-                <f:ajax render="choice" listener="#{countrieBean.countryChanged()}"/>
-                <f:selectItems value="#{countrieBean.countries}"/>
-                <f:converter converterId="countryConverter"/>
-            </h:selectOneMenu>
-        </h:form>
-        <h:form>
-            <h:outputLabel for="combo3" value="choisissez un style : "/>
-            <h:selectOneMenu id="combo3" value="#{typeBean.typeSelected}">
-                <f:ajax render="choice" listener="#{typeBean.typeChanged()}"/>
-                <f:selectItems value="#{typeBean.types}"/>
-                <f:converter converterId="typeConverter"/>
-            </h:selectOneMenu>
-        </h:form>
-    <h2>
-        <h:outputText id="choice" value="votre selection :
-        #{colorBean.colorSelected}
-        #{countrieBean.countrySelected}
-        #{typeBean.typeSelected}"/>
-    </h2>
+            <h:outputLabel for="combo" value="une couleur : "/>
+            <p:selectOneMenu id="combo" value="#{articleBean.colorSelector}">
+                <f:ajax render="choice" listener="#{colorBean.colorChanged()}"/>
+                <f:selectItem itemLabel="Toutes" itemValue="#{null}" />
+                <f:selectItems value="#{colorBean.colors}"/>
+                <f:converter converterId="colorConverter"/>
+            </p:selectOneMenu>
+
+                <h:outputLabel for="combo2" value="un pays : "/>
+                <p:selectOneMenu id="combo2" value="#{articleBean.countrySelector}">
+                    <f:ajax render="choice" listener="#{countrieBean.countryChanged()}"/>
+                    <f:selectItem itemLabel="Tous" itemValue="#{null}" />
+                    <f:selectItems value="#{countrieBean.countries}"/>
+                    <f:converter converterId="countryConverter"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel for="combo3" value="un style : "/>
+                <p:selectOneMenu id="combo3" value="#{articleBean.styleSelector}">
+                    <f:ajax render="choice" listener="#{typeBean.typeChanged()}"/>
+                    <f:selectItem itemLabel="Tous" itemValue="#{null}" />
+                    <f:selectItems value="#{typeBean.types}"/>
+                    <f:converter converterId="typeConverter"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel for="combo4" value="une marque : "/>
+                <p:selectOneMenu id="combo4" value="#{articleBean.brandSelector}">
+                    <f:ajax render="choice" listener="#{marqueBean.marqueChanged()}"/>
+                    <f:selectItem itemLabel="Toutes" itemValue="#{null}" />
+                    <f:selectItems value="#{marqueBean.marques}"/>
+                    <f:converter converterId="marqueConverter"/>
+                </p:selectOneMenu>
+            </h:form>
+        <p>
+            <h:outputText id="choice" value="votre selection :
+            #{colorBean.colorSelected}
+            #{countrieBean.countrySelected}
+            #{typeBean.typeSelected}
+            #{marqueBean.marqueSelected}"/>
+        </p>
+        <p:commandButton value="Rechercher" styleClass="ui-button-outlined ui-button-warning" action="#{articleBean.findArticle()}" update="resultsTable" />
+        <p:commandButton value="J'ai de la chance!" styleClass="ui-button-outlined ui-button-warning" action="#{articleBean.selectRandomArticle()}" update="resultsTable" />
+        <p:commandButton value="Catalogue complet" styleClass="ui-button-outlined ui-button-warning" action="#{articleBean.selectAllArticle()}" update="resultsTable" />
+    </p:card>
+        <p:card style="width: auto; margin-bottom: 2em">
+            <p:panel id="resultsTable">
+            <p:dataTable var="article" value="#{articleBean.articles}"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                         paginator="true" rows="15" styleClass="mt-2">
+                <p:column headerText="Nom">
+                    <h:outputText value="#{article.name}" />
+                </p:column>
+                <p:column headerText="Style">
+                    <h:outputText value="#{article.type}" />
+                </p:column>
+                <p:column headerText="Couleur">
+                    <h:outputText value="#{article.color}" />
+                </p:column>
+                <p:column headerText="Titrage">
+                    <h:outputText value="#{article.titrage} %" />
+                </p:column>
+                <p:column headerText="Brasserie">
+                    <h:outputText value="#{article.marque}" />
+                </p:column>
+            </p:dataTable>
+            </p:panel>
+        </p:card>
     </h:body>
-    <h:button>Voir les Resultats : </h:button>
+    <h3>
+        <h:outputText value="2023 build with fun by dazedDive"/>
+    </h3>
 </f:view>
 </html>

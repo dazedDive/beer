@@ -1,8 +1,23 @@
 html{
     background: linear-gradient(#747263, #f9f9dc);
     font-family: Ubuntu;
-    padding: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 body{
     color: #232222;
+}
+h1{
+    color: white;
+}
+h3{
+    background-color: #232222;
+    color: white;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    text-align: end;
+}
+button{
+    margin-right: 10px;
 }

@@ -30,6 +30,5 @@ public class ColorBean implements Serializable {
         this.colorSelected = colorSelected;
     }
     public void colorChanged(){
-        System.out.println(colorSelected);
     }
 }

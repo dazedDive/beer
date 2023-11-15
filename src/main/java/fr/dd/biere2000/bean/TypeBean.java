@@ -33,6 +33,5 @@ public class TypeBean {
     }
 
     public void typeChanged(){
-
     }
 }

@@ -15,7 +15,7 @@ public class CountryBean {
     private Pays countrySelected;
 
     @PostConstruct
-    private void init(){
+    private void Init(){
         Countries = DAOFactory.paysDAO().readAll();
     }
 
@@ -31,7 +31,6 @@ public class CountryBean {
         this.countrySelected = countrySelected;
     }
     public void countryChanged(){
-
     }
 
 }

@@ -6,7 +6,7 @@ public class Couleur {
 
     @Override
     public String toString() {
-        return "Bière " + libelle;
+        return libelle;
     }
     public Couleur(Integer id, String libelle) {
         this.id = id;

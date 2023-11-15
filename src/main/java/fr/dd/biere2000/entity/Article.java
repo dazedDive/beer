@@ -5,13 +5,17 @@ public class Article {
     private String name;
     private Couleur color;
     private TypeBiere type;
+    private float titrage;
+    private Marque marque;
 
-    public Article(int id, String name, Couleur color, TypeBiere type) {
+    public Article(int id, String name, Couleur color, TypeBiere type, float titrage, Marque marque) {
         this.id = id;
         this.name = name;
         this.color = color;
         this.type = type;
-    }
+        this.titrage = titrage;
+        this.marque = marque;
+     }
     public Article(int id, String name) {
         this.id = id;
         this.name = name;
@@ -47,6 +51,22 @@ public class Article {
 
     public void setType(TypeBiere type) {
         this.type = type;
+    }
+
+    public float getTitrage() {
+        return titrage;
+    }
+
+    public void setTitrage(float titrage) {
+        this.titrage = titrage;
+    }
+
+    public Marque getMarque() {
+        return marque;
+    }
+
+    public void setMarque(Marque marque) {
+        this.marque = marque;
     }
 
     @Override

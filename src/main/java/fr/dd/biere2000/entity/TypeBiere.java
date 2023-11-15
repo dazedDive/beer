@@ -27,6 +27,6 @@ public class TypeBiere {
 
     @Override
     public String toString() {
-        return "dans un style " + libelle;
+        return libelle;
     }
 }

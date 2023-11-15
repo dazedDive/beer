@@ -21,11 +21,14 @@ public class CountryConverter implements Converter<Pays> {
                }
            }
        }
-        return null;
+       return null;
     }
 
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, Pays pays) {
-        return String.valueOf(pays.getId());
+        if(pays != null) {
+            return String.valueOf(pays.getId());
+        }
+        return "";
     }
 }

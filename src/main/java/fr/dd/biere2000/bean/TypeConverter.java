@@ -26,6 +26,9 @@ public class TypeConverter implements Converter<TypeBiere> {
 
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, TypeBiere typeBiere) {
-        return String.valueOf(typeBiere.getId());
+        if(typeBiere != null) {
+            return String.valueOf(typeBiere.getId());
+        }
+        return "";
     }
 }

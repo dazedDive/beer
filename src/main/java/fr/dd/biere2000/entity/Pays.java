@@ -14,6 +14,8 @@ public class Pays {
         this.id = id;
         this.nom = nom;
     }
+    public Pays() {
+    }
 
     public int getId() {
         return id;
@@ -41,10 +43,6 @@ public class Pays {
 
     @Override
     public String toString() {
-        if(continent.getLibelle()!=null) {
-            return nom + "(" + continent.getLibelle() + ")";
-        } else {
-            return nom;
-        }
+        return nom + " (" + continent.getLibelle() + ")";
     }
 }
